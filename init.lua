@@ -2,12 +2,9 @@ local opt = vim.opt
 local g = vim.g
 
 require("config.lazy")
-require("lazy").setup({
-	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}
-})
 require('lualine').setup {
   options = {
-    theme = 'tokyonight'
+    theme = 'rose-pine'
   }
 }
 
@@ -29,4 +26,4 @@ vim.api.nvim_create_autocmd("BufEnter", {
   desc = "Disable New Line Comment",
 })
 
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme rose-pine-moon]]
