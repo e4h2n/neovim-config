@@ -2,10 +2,63 @@ local opt = vim.opt
 local g = vim.g
 
 require("config.lazy")
-require('lualine').setup {
-  options = {
-    theme = 'rose-pine'
-  }
+
+-- lualine
+local custom_rose_pine = require'lualine.themes.rose-pine'
+local overlay = '#56526e' -- these names are not accurate to the palatte
+local surface = '#2a273f'
+local a_text = '#2a283e'
+
+custom_rose_pine.normal.a.bg = '#f6c177'
+custom_rose_pine.normal.a.fg = a_text
+custom_rose_pine.normal.b.fg = custom_rose_pine.normal.a.bg
+custom_rose_pine.normal.b.bg = overlay
+custom_rose_pine.normal.c.bg = surface
+
+custom_rose_pine.insert.a.bg = '#3e8fb0'
+custom_rose_pine.insert.a.fg = a_text
+custom_rose_pine.insert.b.fg = '#9ccfd8'
+custom_rose_pine.insert.b.bg = overlay
+custom_rose_pine.insert.c.bg = surface
+
+custom_rose_pine.command.a.bg = '#ea9a97'
+custom_rose_pine.command.a.fg = a_text
+custom_rose_pine.command.b.fg = custom_rose_pine.command.a.bg
+custom_rose_pine.command.b.bg = overlay
+custom_rose_pine.command.c.bg = surface
+
+custom_rose_pine.replace.a.bg = '#9ccfd8'
+custom_rose_pine.replace.a.fg = a_text
+custom_rose_pine.replace.b.fg = custom_rose_pine.replace.a.bg
+custom_rose_pine.replace.b.bg = overlay
+custom_rose_pine.replace.c.bg = surface
+
+custom_rose_pine.visual.a.fg = a_text
+custom_rose_pine.visual.b.bg = overlay
+custom_rose_pine.visual.c.bg = surface
+
+custom_rose_pine.inactive.a.bg = overlay
+custom_rose_pine.inactive.a.fg = '#908caa'
+custom_rose_pine.inactive.b.bg = surface
+custom_rose_pine.inactive.c.bg = '#2a283e'
+
+local lualine = require('lualine')
+lualine.setup {
+	options = {
+    	theme = custom_rose_pine,
+	},
+	sections = {
+		lualine_a = { 'mode' },
+		lualine_b = { 'branch', 'diff' },
+		lualine_c = { 'filename' },
+		lualine_x = { 'filetype' },
+	},
+	inactive_sections = {
+		lualine_a = { 'filename' },
+		lualine_b = { 'branch', 'diff' },
+		lualine_c = { },
+		lualine_x = { 'filetype' },
+	}
 }
 
 opt["tabstop"] = 4
